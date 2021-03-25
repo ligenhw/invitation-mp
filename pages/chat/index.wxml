@@ -20,12 +20,12 @@
         </view>
     </view>
     <view class="send_msg">
-        <view>
-            <input placeholder="在这里输入您要说的话" value="{{inputValue}}" class="send_ipt" bindinput="bindKeyInput" />
+        <view style="display: flex; align-items: center;">
+            <input placeholder="在这里输入您要说的话" value="{{inputValue}}" style="flex: 3; " bindinput="bindKeyInput" />
             <button
                 type="primary"
+                style="flex: 1; "
                 loading="{{loading}}"
-                class="send_btn"
                 open-type="getUserInfo"
                 bindgetuserinfo="bindgetuserinfo">
                 发布

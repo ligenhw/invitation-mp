@@ -23,34 +23,6 @@ Page({
       this.setData({
         comment: comment
       })
-      if (comment.last) {
-        // wx.showToast({
-        //   title: '已经到底了',
-        //   icon: 'none',
-        //   duration: 2000
-        // })
-      } else {
-        let chatNum = mainInfo.data.length + this.data.chatNum
-        let chatList = this.data.chatList.concat(mainInfo.data)
-        this.setData({
-          chatNum: chatNum,
-          chatList: chatList
-        })
-        const skip = mainInfo.data.length + this.data.skip
-        if (this.data.limit === 9) {
-          this.setData({
-            limit: 10,
-            count: mainInfo.data.length,
-            skip: skip
-          })
-        } else {
-          this.setData({
-            limit: 9,
-            count: mainInfo.data.length,
-            skip: skip
-          })
-        }
-      }
     },
     /**
      * 生命周期函数--监听页面加载
