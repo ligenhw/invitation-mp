@@ -1,23 +1,34 @@
-<!--index.wxml-->
+<!--pages/invitation/index.wxml-->
+<view wx:if="{{wedding.audio}}">
+  <view wx:if="{{musicStatus}}">
+    <view class="background_music" bindtap="play">
+      <image src="../../image/music_icon.png" class="musicImg music_icon"/>
+      <image src="../../image/music_play.png" class="music_play pauseImg" />
+    </view>
+  </view>
+  <view wx:else>
+    <view class="background_music" bindtap="play">
+      <image src="../../image/music_icon.png" class="musicImg"/>
+      <image src="../../image/music_play.png" class="music_play playImg" />
+    </view>
+  </view>
+</view>
 <view class="container">
-  <view class="userinfo">
-    <block wx:if="{{canIUseOpenData}}" calss="userinfo-opendata">
-      <view class="userinfo-avatar" bindtap="bindViewTap">
-        <open-data type="userAvatarUrl"></open-data>
-      </view>
-      <open-data type="userNickName"></open-data>
-    </block>
-    <block wx:elif="{{!hasUserInfo}}">
-      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
-    </block>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+    <image src="../../image/inv.png" class='inv'></image>
+    <image src='{{wedding.poster.img}}' class='cover' mode='aspectFill'></image>
+    <view class='datetime' animation="{{animationData}}">
+        <view class='box'>
+            <view class="name css13610f7ae66601">
+                <span class="fl">{{wedding.groom.name}}</span>
+                <span class="and">&</span>
+                <span class="fr ">{{wedding.bride.name}}</span>
+            </view>
+            <view class="date css13610f7ae66601">
+                <view>谨定于 {{wedding.time}} 举办婚礼</view>
+                <view>地址：{{wedding.address.text}}</view>
+                <view>{{wedding.poster.welcome}}</view>
+            </view>
+            <image class="we" src="../../image/we.png"></image>
+        </view>
+    </view>
 </view>

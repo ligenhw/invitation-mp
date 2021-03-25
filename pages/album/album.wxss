@@ -2,3 +2,7 @@
 .slide-image{
   width: 100%;
 }
+
+.swiper {
+  height: 100vh;
+}
