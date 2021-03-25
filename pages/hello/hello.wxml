@@ -1,0 +1,9 @@
+<view class='bg_box'>
+  <image src='http://oss.bestlang.cn/invitation/user/1/CR2A7075.jpg'></image>
+    <view class="vcenter">
+  <text>{{wedding.bride.name}}</text>
+  <text>{{wedding.groom.name}}</text>
+  <text>{{wedding.time}}</text>
+  <text>{{wedding.address.text}}</text>
+</view>
+</view>
