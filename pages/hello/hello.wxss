@@ -1,0 +1,20 @@
+/* pages/hello/hello.wxss */
+
+page{
+  overflow: hidden
+}
+.bg_box{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+}
+.bg_box>image{
+  width: 100%;
+  height: 100%;
+}
+.vcenter {
+  position: relative;
+  bottom:30%;
+}

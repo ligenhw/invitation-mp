@@ -1,0 +1,4 @@
+
+<map class="bgMap" longitude="124.06639" latitude="40.457256">
+  <button bindtap="onNavigation" style="position: relative; left: 129rpx; top: 148rpx">导航</button>
+</map>

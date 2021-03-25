@@ -1,0 +1,48 @@
+{
+  "pages":[
+    "pages/hello/hello",
+    "pages/map/map",
+    "pages/index/index",
+    "pages/album/album",
+    "pages/logs/logs"
+  ],
+  "tabBar": {
+    "list":[
+      {
+        "pagePath": "pages/hello/hello",
+        "iconPath": "image/tab/ic_home_normal.png",
+        "selectedIconPath": "image/tab/ic_home_select.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/album/album",
+        "iconPath": "image/tab/meme-normal@2x.png",
+        "selectedIconPath": "image/tab/me-selected@2x.png",
+        "text": "相册"
+      },
+      {
+        "pagePath": "pages/map/map",
+        "iconPath": "image/tab/ic_nav_normal.png",
+        "selectedIconPath": "image/tab/ic_nav_select.png",
+        "text": "导航"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "image/tab/ic_heart_normal.png",
+        "selectedIconPath": "image/tab/ic_heart_select.png",
+        "text": "祝福"
+      }
+    ]
+  },
+  "requiredBackgroundModes": [
+    "audio"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle":"black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

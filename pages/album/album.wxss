@@ -1,0 +1,4 @@
+/* pages/album/album.wxss */
+.slide-image{
+  width: 100%;
+}

@@ -1,0 +1,9 @@
+
+<swiper class="" indicator-dots="true" autoplay="true" interval="10000" duration="1000" vertical="true">
+  <block wx:for="{{picList}}" wx:key="index">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" mode="aspectFill" bindtap='previewImg' data-previewurl='{{picList}}'
+      data-currenturl='{{item}}'/>
+    </swiper-item>   
+  </block>  
+</swiper>
