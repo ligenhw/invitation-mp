@@ -1,14 +1,14 @@
 {
   "pages":[
-    "pages/hello/hello",
-    "pages/map/map",
     "pages/index/index",
-    "pages/album/album"
+    "pages/map/map",
+    "pages/album/album",
+    "pages/chat/index"
   ],
   "tabBar": {
     "list":[
       {
-        "pagePath": "pages/hello/hello",
+        "pagePath": "pages/index/index",
         "iconPath": "image/tab/ic_home_normal.png",
         "selectedIconPath": "image/tab/ic_home_select.png",
         "text": "首页"
@@ -26,7 +26,7 @@
         "text": "导航"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/chat/index",
         "iconPath": "image/tab/ic_heart_normal.png",
         "selectedIconPath": "image/tab/ic_heart_select.png",
         "text": "祝福"
