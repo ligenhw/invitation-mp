@@ -3,8 +3,7 @@
     "pages/hello/hello",
     "pages/map/map",
     "pages/index/index",
-    "pages/album/album",
-    "pages/logs/logs"
+    "pages/album/album"
   ],
   "tabBar": {
     "list":[
