@@ -1,4 +1,7 @@
 // index.js
+import { pv } from "../../starry/collctApi";
+import api from '../../invitation/api'
+
 // 获取应用实例
 const app = getApp()
 
@@ -18,6 +21,7 @@ Page({
     })
   },
   onLoad() {
+    console.log('canIUseGetUserProfile : ', wx.getUserProfile)
     if (wx.getUserProfile) {
       this.setData({
         canIUseGetUserProfile: true
@@ -44,5 +48,32 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  login() {
+    wx.getUserProfile({
+      desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+      success: (res) => {
+        console.log('wx.getUserProfile : ', res)
+        this.setData({
+          userInfo: res.userInfo,
+          hasUserInfo: true
+        })
+
+        this.invitationLogin(res.userInfo)
+      }
+    })
+  },
+  invitationLogin(userInfo) {
+    wx.login({
+      success: async res => {
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        console.log('wx.login : ', res, userInfo)
+        await api.login(res.code, userInfo)
+        console.log('invitationLogin login finish')
+      }
+    })
+  },
+  onShow() {
+    pv('login')
   }
 })
