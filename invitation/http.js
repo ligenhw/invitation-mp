@@ -74,7 +74,7 @@ const reMatch = cookie => {
 const handleError = (res, reject) => {
   if (res.statusCode === 403 && res.data.code === 'Unauthorized') {
     wx.navigateTo({
-      url: '/pages/index2/index',
+      url: '/pages/login/index',
     })
   } else {
     reject(res)

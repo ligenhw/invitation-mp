@@ -1,4 +1,3 @@
-import http from '../../invitation/http'
 import api from '../../invitation/api'
 import { pv } from "../../starry/collctApi";
 
@@ -15,7 +14,7 @@ Page({
     })
   },
   async onLoad() {
-    var wedding = await http.get(api.wedding)
+    var wedding = await api.wedding()
     this.setData({
       wedding: wedding
     })

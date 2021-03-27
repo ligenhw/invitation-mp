@@ -1,6 +1,6 @@
 {
   "pages":[
-    "pages/index/index",
+    "pages/post/index",
     "pages/map/map",
     "pages/album/album",
     "pages/chat/index"
@@ -8,7 +8,7 @@
   "tabBar": {
     "list":[
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/post/index",
         "iconPath": "image/tab/ic_home_normal.png",
         "selectedIconPath": "image/tab/ic_home_select.png",
         "text": "首页"

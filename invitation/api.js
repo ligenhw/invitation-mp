@@ -2,8 +2,17 @@ import http from './http'
 
 const host = 'https://bestlang.cn'
 const basePath = host + '/api/invitation'
-const wedding = basePath + '/wedding/1'
-const queryComment = basePath + '/comment/1'
+
+const wedding = () => {
+  return http.get(basePath + '/wedding/1')
+}
+
+const queryComment = (page, size) => {
+  return http.get(basePath + '/comment/1', {
+    page: page,
+    size: size
+  })
+}
 
 const createComment = content => {
   return http.post(basePath + '/comment', {
