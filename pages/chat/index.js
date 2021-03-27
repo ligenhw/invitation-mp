@@ -1,39 +1,41 @@
 // pages/chat/index.js
-import http from '../../invitation/http'
 import api from '../../invitation/api'
-import { pv } from "../../starry/collctApi";
+import { pv } from "../../starry/collctApi"
 
-const app = getApp();
+const app = getApp()
+const size = 10
 
 Page({
     /**
      * 页面的初始数据
      */
     data: {
-      chatNum: 0,
+      commentList: [],
       inputValue: '',
-      chatList: [],
-      limit: 9,
-      skip: 0,
-      count: 0,
-      loading: false
-    },
-    async getComment () {
-      var comment = await http.get(api.queryComment)
-      this.setData({
-        comment: comment
-      })
+      page: 0
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: async function(options) {
-      await this.getComment()
+      var comment = await api.queryComment(0, size)
+      this.setData({
+        commentList: comment.content
+      })
     },
 
     onPublish: async function() {
-      console.log('onPublish', this.data.inputValue)
       await api.createComment(this.data.inputValue)
+
+      const comment = await api.queryComment(0, size)
+      this.setData({
+        commentList: comment.content,
+        page: 0,
+        inputValue: ''
+      })
+      wx.pageScrollTo({
+        scrollTop: 0,
+      })
     },
 
     /**
@@ -75,7 +77,14 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: async function () {
-      await this.getComment()
+      const nextPage = this.data.page + 1
+
+      const comment = await api.queryComment(nextPage, size)
+      const appendComment = this.data.commentList.concat(comment.content)
+      this.setData({
+        commentList: appendComment,
+        page: nextPage
+      })
     },
 
     /**

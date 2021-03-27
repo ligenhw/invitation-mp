@@ -1,5 +1,4 @@
 // pages/invitation/index.js
-import http from '../../invitation/http'
 import api from '../../invitation/api'
 import { pv } from "../../starry/collctApi";
 
@@ -18,7 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: async function (options) {
-    var wedding = await http.get(api.wedding)
+    var wedding = await api.wedding()
     this.setData({
       wedding: wedding
     })

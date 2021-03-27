@@ -1,7 +1,7 @@
 <!--pages/chat/index.wxml-->
 <view class="container">
-    <view wx:if="{{comment.totalElements > 0}}">
-        <view class="chat_list" wx:for="{{comment.content}}" wx:key="user">
+    <view wx:if="{{commentList.length > 0}}">
+        <view class="chat_list" wx:for="{{commentList}}" wx:key="user">
             <view class="chat_face">
                 <image src="{{item.userBaseInfo.avatarUrl}}" />
             </view>

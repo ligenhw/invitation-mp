@@ -70,6 +70,14 @@ Page({
         console.log('wx.login : ', res, userInfo)
         await api.login(res.code, userInfo)
         console.log('invitationLogin login finish')
+
+        // TODO: 不显示
+        wx.showToast({
+          title: '登陆成功',
+          icon: 'none',
+          duration: 1500
+        })
+        wx.navigateBack()
       }
     })
   },
