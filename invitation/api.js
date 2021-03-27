@@ -1,7 +1,7 @@
-const host = 'https://bestlang.cn/api/invitation'
-
-const wedding = host + '/wedding/1'
-const comment = host + '/comment/1'
+const host = 'https://bestlang.cn'
+const basePath = host + '/api/invitation'
+const wedding = basePath + '/wedding/1'
+const comment = basePath + '/comment/1'
 
 module.exports = {
   wedding,

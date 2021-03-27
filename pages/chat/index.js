@@ -1,6 +1,7 @@
 // pages/chat/index.js
 import http from '../../invitation/http'
 import api from '../../invitation/api'
+import { pv } from "../../starry/collctApi";
 
 const app = getApp();
 const utils = require('../../utils/util')
@@ -41,7 +42,9 @@ Page({
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: async function () {},
+    onShow: async function () {
+      pv('comment')
+    },
 
     /**
      * 生命周期函数--监听页面隐藏

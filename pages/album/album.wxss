@@ -1,6 +1,7 @@
 /* pages/album/album.wxss */
 .slide-image{
   width: 100%;
+  height: 100vh;
 }
 
 .swiper {

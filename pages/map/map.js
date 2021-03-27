@@ -1,5 +1,6 @@
 import http from '../../invitation/http'
 import api from '../../invitation/api'
+import { pv } from "../../starry/collctApi";
 
 Page({
   data: {
@@ -30,5 +31,8 @@ Page({
         }
       ]
     })
+  },
+  onShow: async function () {
+    pv('map')
   }
 })
