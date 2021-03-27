@@ -18,6 +18,6 @@
     </block>
   </view>
   <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+    <button type="primary" class="user-motto" bindtap="login">微信登陆</button>
   </view>
 </view>

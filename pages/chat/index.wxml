@@ -22,12 +22,19 @@
     <view class="send_msg">
         <view style="display: flex; align-items: center;">
             <input placeholder="在这里输入您要说的话" value="{{inputValue}}" style="flex: 3; " bindinput="bindKeyInput" />
-            <button
+            <!-- <button
                 type="primary"
                 style="flex: 1; "
                 loading="{{loading}}"
                 open-type="getUserInfo"
                 bindgetuserinfo="bindgetuserinfo">
+                发布
+            </button> -->
+            <button
+                type="primary"
+                style="flex: 1;"
+                loading="{{loading}}"
+                bindtap="onPublish">
                 发布
             </button>
         </view>
