@@ -1,6 +1,8 @@
 import api from '../../invitation/api'
 import { pv } from "../../starry/collctApi";
 
+const app = getApp()
+
 Page({
   data: {
     markers: [],
@@ -13,8 +15,11 @@ Page({
       name: this.data.wedding.address.text
     })
   },
-  async onLoad() {
-    var wedding = await api.wedding()
+  async onLoad(options) {
+    const weddingId = options.weddingId || app.globalData.weddingId
+    app.globalData.weddingId = weddingId
+    var wedding = await api.wedding(weddingId)
+
     this.setData({
       wedding: wedding
     })

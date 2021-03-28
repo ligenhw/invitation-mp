@@ -1,5 +1,5 @@
 <!--pages/chat/index.wxml-->
-<view class="container">
+<view class="chat_container">
     <view wx:if="{{commentList.length > 0}}">
         <view class="chat_list" wx:for="{{commentList}}" wx:key="user">
             <view class="chat_face">

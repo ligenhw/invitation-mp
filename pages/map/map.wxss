@@ -44,6 +44,6 @@
 }
 .call_img {
   display: block;
-  height: 130rpx;
-  width: 130rpx;
+  height: 110rpx;
+  width: 110rpx;
 }
