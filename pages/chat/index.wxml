@@ -21,7 +21,7 @@
     </view>
     <view class="send_msg">
         <view style="display: flex; align-items: center;">
-            <input placeholder="在这里输入您要说的话" value="{{inputValue}}" style="flex: 3; " bindinput="bindKeyInput" />
+            <input placeholder="输入您要说的话" value="{{inputValue}}" style="flex: 3; " bindinput="bindKeyInput" />
             <!-- <button
                 type="primary"
                 style="flex: 1; "

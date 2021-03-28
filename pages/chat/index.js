@@ -25,6 +25,14 @@ Page({
     },
 
     onPublish: async function() {
+      if (this.data.inputValue.trim().length === 0) {
+        wx.showToast({
+          title: '请输入留言内容!',
+          icon: 'none'
+        })
+        return
+      }
+
       await api.createComment(this.data.inputValue)
 
       const comment = await api.queryComment(0, size)
