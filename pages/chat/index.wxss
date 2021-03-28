@@ -3,6 +3,14 @@ page {
     background-color: hsla(0, 100%, 50%, 0.425);
     padding-bottom: 150rpx;
 }
+.chat_container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+} 
 .chat_list {
     width: 630rpx;
     margin: 0 auto;

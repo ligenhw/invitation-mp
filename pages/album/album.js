@@ -2,6 +2,8 @@
 import api from '../../invitation/api'
 import { pv } from "../../starry/collctApi";
 
+const app = getApp()
+
 Page({
 
   /**
@@ -15,7 +17,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
  onLoad: async function (options) {
-    var wedding = await api.wedding()
+    const weddingId = options.weddingId || app.globalData.weddingId
+    app.globalData.weddingId = weddingId
+    var wedding = await api.wedding(weddingId)
+
     this.setData({
       wedding: wedding
     })
@@ -69,13 +74,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   }
 })

@@ -18,7 +18,10 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: async function(options) {
-      var comment = await api.queryComment(0, size)
+      const weddingId = options.weddingId || app.globalData.weddingId
+      app.globalData.weddingId = weddingId
+
+      var comment = await api.queryComment(weddingId, 0, size)
       this.setData({
         commentList: comment.content
       })
@@ -35,7 +38,7 @@ Page({
 
       await api.createComment(this.data.inputValue)
 
-      const comment = await api.queryComment(0, size)
+      const comment = await api.queryComment(app.globalData.weddingId, 0, size)
       this.setData({
         commentList: comment.content,
         page: 0,
@@ -87,19 +90,12 @@ Page({
     onReachBottom: async function () {
       const nextPage = this.data.page + 1
 
-      const comment = await api.queryComment(nextPage, size)
+      const comment = await api.queryComment(app.globalData.weddingId, nextPage, size)
       const appendComment = this.data.commentList.concat(comment.content)
       this.setData({
         commentList: appendComment,
         page: nextPage
       })
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function() {
-      app.shareHandle();
     },
     bindKeyInput: function(e) {
         this.setData({

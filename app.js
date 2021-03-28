@@ -17,5 +17,6 @@ App({
     })
   },
   globalData: {
+    weddingId: 1
   }
 })

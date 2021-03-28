@@ -17,9 +17,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: async function (options) {
-    var wedding = await api.wedding()
+    const weddingId = options.weddingId || 1
+    app.globalData.weddingId = weddingId
+
+    var wedding = await api.wedding(weddingId)
     this.setData({
-      wedding: wedding
+      wedding: wedding,
+      musicStatus: wedding.audio.autoPlay || false
     })
 
     //创建动画
@@ -91,7 +95,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    app.shareHandle();
+    return {
+      title: this.data.wedding.groom.name + ' ❤️ ' + this.data.wedding.bride.name + ' 邀请您参加我们的婚礼 🎉🎉🎉',
+      path: '/pages/post/index?weddingId=' + this.data.wedding.id
+    }
   },
   play: function (event) {
     if (this.data.musicStatus) {
