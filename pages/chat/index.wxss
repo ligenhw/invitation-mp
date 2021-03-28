@@ -1,6 +1,6 @@
 /* pages/chat/index.wxss */
 page {
-    background-color: #fde7e3;
+    background-color: #3e70b9;
     padding-bottom: 150rpx;
 }
 .chat_list {
