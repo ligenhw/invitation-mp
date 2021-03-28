@@ -15,8 +15,8 @@
       },
       {
         "pagePath": "pages/album/album",
-        "iconPath": "image/tab/meme-normal@2x.png",
-        "selectedIconPath": "image/tab/me-selected@2x.png",
+        "iconPath": "image/tab/index_pic.png",
+        "selectedIconPath": "image/tab/index_pic_c.png",
         "text": "相册"
       },
       {

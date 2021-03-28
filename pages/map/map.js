@@ -31,6 +31,16 @@ Page({
       ]
     })
   },
+  callhe() {
+    wx.makePhoneCall({
+      phoneNumber: this.data.wedding.groom.tel,
+    })
+  },
+  callshe() {
+    wx.makePhoneCall({
+      phoneNumber: this.data.wedding.bride.tel,
+    })
+  },
   onShow: async function () {
     pv('map')
   }

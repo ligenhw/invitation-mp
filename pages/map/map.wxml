@@ -1,3 +1,15 @@
-<map class="bgMap bg_box" markers="{{markers}}" longitude="124.06639" latitude="40.457256" >
-  <button type="primary" bindtap="onNavigation" style="position: relative; left: 129rpx; top: 148rpx">导航</button>
+<view class="container">
+  <map class="bg_box" markers="{{markers}}" longitude="{{wedding.address.longitude}}" latitude="{{wedding.address.latitude}}" >
+  <button type="primary" class="nav" bindtap="onNavigation" >导航</button>
 </map>
+<view class="phone_box">
+  <view class="tel_he" wx:if="{{wedding.groom.tel}}" bindtap="callhe">
+      <image src="../../image/he.png" class="call_img"/>
+      <text>呼叫新郎</text>
+  </view>
+  <view class="tel_she" wx:if="{{wedding.bride.tel}}" bindtap="callshe">
+      <image src="../../image/she.png" class="call_img"/>
+      <text>呼叫新娘</text>
+  </view>
+</view>
+</view>
