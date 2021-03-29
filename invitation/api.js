@@ -14,9 +14,9 @@ const queryComment = (weddingId, page, size) => {
   })
 }
 
-const createComment = content => {
+const createComment = (topic, content) => {
   return http.post(basePath + '/comment', {
-    topic: 1,
+    topic: topic,
     content: content
   })
 }
@@ -28,9 +28,14 @@ const login = (code, userInfo) => {
   })
 }
 
+const createWedding = wedding => {
+  return http.post(basePath + '/wedding', wedding)
+}
+
 module.exports = {
   wedding,
   queryComment,
   createComment,
-  login
+  login,
+  createWedding
 }

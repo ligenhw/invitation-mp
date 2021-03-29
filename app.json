@@ -3,7 +3,8 @@
     "pages/post/index",
     "pages/map/map",
     "pages/album/album",
-    "pages/chat/index"
+    "pages/chat/index",
+    "pages/editor/index"
   ],
   "tabBar": {
     "list":[
@@ -36,6 +37,10 @@
   "requiredBackgroundModes": [
     "audio"
   ],
+  "useExtendedLib": {
+    "kbone": true,
+    "weui": true
+  },
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
