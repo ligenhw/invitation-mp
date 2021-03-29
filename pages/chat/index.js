@@ -36,7 +36,7 @@ Page({
         return
       }
 
-      await api.createComment(this.data.inputValue)
+      await api.createComment(app.globalData.weddingId, this.data.inputValue)
 
       const comment = await api.queryComment(app.globalData.weddingId, 0, size)
       this.setData({
