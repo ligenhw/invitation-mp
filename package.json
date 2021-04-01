@@ -1,0 +1,22 @@
+{
+  "name": "invitation-mp",
+  "version": "1.0.0",
+  "description": "邀请函,婚礼邀请小程序",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ligenhw/invitation-mp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ligenhw/invitation-mp/issues"
+  },
+  "homepage": "https://github.com/ligenhw/invitation-mp#readme",
+  "dependencies": {
+    "miniprogram-barrage": "^1.1.1"
+  }
+}

@@ -16,6 +16,9 @@
 <view class="container">
     <image src="../../image/inv.png" class='inv'></image>
     <image src='{{wedding.poster.img}}' class='cover' mode='aspectFill'></image>
+    <barrage 
+      class="barrage" 
+    ></barrage>
     <view class='datetime' animation="{{animationData}}">
         <view class='box'>
             <view class="name css13610f7ae66601">
@@ -30,5 +33,13 @@
             </view>
             <image class="we" src="../../image/we.png"></image>
         </view>
+    </view>
+    <view class="inputContainer">
+      <input class = "input"
+      bindinput="handleInput"
+      placeholder="请输入弹幕信息" 
+      value="{{barrageValue}}"
+      />
+      <button class="send" bind:tap="handleAddClick">发送弹幕</button>
     </view>
 </view>
