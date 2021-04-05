@@ -10,12 +10,9 @@ const upyun = new Upyun({
   })
 
 Page({
-    onShareAppMessage() {
-        return {
-            title: '制作邀请函'
-        }
-    },
     data: {
+        user: {},
+
         groom_name: '',
         groom_mobile: '',
         bride_name: '',
@@ -53,11 +50,16 @@ Page({
         }
     ]
     },
-    onLoad() {
+    async onLoad() {
         this.setData({
             selectFile: this.selectFile.bind(this),
             uploadFile: this.uploadFile.bind(this),
             uploadAlbumFile: this.uploadAlbumFile.bind(this)
+        })
+
+        const user = await api.queryUser()
+        this.setData({
+            user
         })
     },
     createWedding: async function() {
@@ -185,7 +187,7 @@ Page({
     },
     upyunUpload(fp, callback) {
         const tmpFileName = this.getFileName(fp);
-        const remotePath = 'invitation/user/' + tmpFileName
+        const remotePath = `invitation/user/${this.data.user.id}/${tmpFileName}`
         const ossPath = 'http://oss.bestlang.cn/' + remotePath
         upyun.upload({
           localPath: fp,

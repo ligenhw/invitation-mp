@@ -7,7 +7,7 @@
                     <input bindinput="formInputChange" data-field="groom_name" class="weui-input" placeholder="请输入姓名" />
                 </mp-cell>
                 <mp-cell prop="groom_tel" title="手机号" ext-class=" weui-cell_vcode">
-                    <input bindinput="formInputChange" data-field="groom_mobile" class="weui-input"
+                    <input bindinput="formInputChange" data-field="groom_tel" class="weui-input"
                         placeholder="请输入手机号" />
                 </mp-cell>
             </mp-cells>
@@ -16,7 +16,7 @@
                     <input bindinput="formInputChange" data-field="bride_name" class="weui-input" placeholder="请输入姓名" />
                 </mp-cell>
                 <mp-cell prop="bride_tel" title="手机号" ext-class=" weui-cell_vcode">
-                    <input bindinput="formInputChange" data-field="bride_mobile" class="weui-input"
+                    <input bindinput="formInputChange" data-field="bride_tel" class="weui-input"
                         placeholder="请输入手机号" />
                 </mp-cell>
             </mp-cells>

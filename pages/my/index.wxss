@@ -21,8 +21,8 @@
 }
 
 .poster-img {
-  height: 400rpx;
-  width: 200rpx;
+  height: 420rpx;
+  width: 280rpx;
 }
 
 .action-button-container {
@@ -35,7 +35,7 @@
 }
 
 .add {
-  position: absolute;
+  position: fixed;
   width: 120rpx;
   height: 120rpx;
   padding: 4rpx;
