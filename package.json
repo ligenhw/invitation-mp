@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/ligenhw/invitation-mp#readme",
   "dependencies": {
+    "miniprogram-api-promise": "^1.0.4",
     "miniprogram-barrage": "^1.1.1"
   }
 }

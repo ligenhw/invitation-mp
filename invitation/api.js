@@ -32,10 +32,20 @@ const createWedding = wedding => {
   return http.post(basePath + '/wedding', wedding)
 }
 
+const queryUserWedding = () => {
+  return http.get(basePath + '/wedding')
+}
+
+const deleteWedding = (weddingId) => {
+  return http.delete(basePath + '/wedding/' + weddingId)
+}
+
 module.exports = {
   wedding,
   queryComment,
   createComment,
   login,
-  createWedding
+  createWedding,
+  queryUserWedding,
+  deleteWedding
 }

@@ -3,19 +3,19 @@
     <mp-form-page subtitle="创建一个婚礼邀请函">
         <mp-form id="form" rules="{{rules}}" models="{{formData}}">
             <mp-cells title="新郎信息">
-                <mp-cell prop="name" title="姓名" ext-class="">
+                <mp-cell prop="groom_name" title="姓名" ext-class="">
                     <input bindinput="formInputChange" data-field="groom_name" class="weui-input" placeholder="请输入姓名" />
                 </mp-cell>
-                <mp-cell prop="mobile" title="手机号" ext-class=" weui-cell_vcode">
+                <mp-cell prop="groom_tel" title="手机号" ext-class=" weui-cell_vcode">
                     <input bindinput="formInputChange" data-field="groom_mobile" class="weui-input"
                         placeholder="请输入手机号" />
                 </mp-cell>
             </mp-cells>
             <mp-cells title="新娘信息">
-                <mp-cell prop="name" title="姓名" ext-class="">
+                <mp-cell prop="bride_name" title="姓名" ext-class="">
                     <input bindinput="formInputChange" data-field="bride_name" class="weui-input" placeholder="请输入姓名" />
                 </mp-cell>
-                <mp-cell prop="mobile" title="手机号" ext-class=" weui-cell_vcode">
+                <mp-cell prop="bride_tel" title="手机号" ext-class=" weui-cell_vcode">
                     <input bindinput="formInputChange" data-field="bride_mobile" class="weui-input"
                         placeholder="请输入手机号" />
                 </mp-cell>
@@ -23,27 +23,30 @@
 
             <mp-cells title="婚礼信息">
                 <mp-cell prop="date" title="婚礼日期" ext-class="">
-                    <picker data-field="date" mode="date" value="{{date}}" start="2021-05-03" end="2023-05-03"
+                    <picker data-field="date" mode="date" value="{{date}}" start="2021-01-01" end="2024-01-01"
                         bindchange="bindDateChange">
                         <view class="weui-input">{{date}}</view>
                     </picker>
                 </mp-cell>
                 <mp-cell title="婚礼海报">
-                    <mp-uploader bindfail="uploadError" bindsuccess="uploadSuccess" select="{{selectFile}}"
-                        upload="{{uplaodFile}}" files="{{files2}}" max-count="1" title="">
+                    <mp-uploader id="poster_img" bindfail="uploadError" bindsuccess="uploadSuccess" select="{{selectFile}}"
+                        upload="{{uploadFile}}" max-count="1" title="">
                     </mp-uploader>
+                </mp-cell>
+                <mp-cell prop="poster_welcome" title="欢迎词" ext-class="">
+                    <input bindinput="formInputChange" data-field="poster_welcome" class="weui-input" placeholder="请输入欢迎词" />
                 </mp-cell>
             </mp-cells>
 
             <mp-cells title="地址">
                 <mp-cell prop="mobile" ext-class=" weui-cell_vcode">
-                    <button slot="footer" type="default" class="weui-vcode-btn" bindtap="chooseLocation">选择位置</button>
-                    <input bindinput="formInputChange" data-field="mobile" class="weui-input" placeholder=""/>
+                    <button slot="footer" type="default" class="weui-vcode-btn" bindtap="chooseLocation">选择地图坐标</button>
+                    <input bindinput="formInputChange" data-field="address_text" class="weui-input" placeholder="输入地址信息"/>
                 </mp-cell>
             </mp-cells>
             
-            <mp-cells title="背景音乐">
-                <mp-cell prop="name" title="歌曲名称" ext-class="">
+            <!-- <mp-cells title="背景音乐">
+                <mp-cell prop="audio_name" title="歌曲名称" ext-class="">
                     <input bindinput="formInputChange" data-field="audio_name" class="weui-input"
                         placeholder="请输入歌曲名" />
                 </mp-cell>
@@ -54,12 +57,12 @@
                 <mp-cell title="自动播放" ext-class="">
                     <switch slot="footer" checked />
                 </mp-cell>
-            </mp-cells>
+            </mp-cells> -->
 
             <mp-cells title="相册信息">
                 <mp-cell>
-                    <mp-uploader bindfail="uploadError" bindsuccess="uploadSuccess" select="{{selectFile}}"
-                        upload="{{uplaodFile}}" files="{{files}}" max-count="10" title="">
+                    <mp-uploader 
+                        upload="{{uploadAlbumFile}}" max-count="10" title="">
                     </mp-uploader>
                 </mp-cell>
             </mp-cells>

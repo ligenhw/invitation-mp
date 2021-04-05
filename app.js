@@ -17,7 +17,7 @@ App({
     })
   },
   globalData: {
-    weddingId: 1,
+    weddingId: '1',
     isConnected: false,
     isReConnect: true,
     reConnectLimit: -1,

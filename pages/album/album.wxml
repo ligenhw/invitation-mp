@@ -4,6 +4,6 @@
     <swiper-item>
       <image src="{{item}}" class="slide-image" mode="aspectFill" bindtap='previewImg' data-previewurl='{{wedding.album}}'
       data-currenturl='{{item}}'/>
-    </swiper-item>   
+    </swiper-item> 
   </block>  
 </swiper>
