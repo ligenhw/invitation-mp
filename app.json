@@ -4,8 +4,14 @@
     "pages/map/map",
     "pages/album/album",
     "pages/chat/index",
+    "pages/my/index",
     "pages/editor/index"
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
   "tabBar": {
     "list":[
       {
@@ -31,6 +37,12 @@
         "iconPath": "image/tab/ic_heart_normal.png",
         "selectedIconPath": "image/tab/ic_heart_select.png",
         "text": "祝福"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "iconPath": "/image/tab/meme-normal@2x.png",
+        "selectedIconPath": "/image/tab/me-selected@2x.png",
+        "text": "我的"
       }
     ]
   },

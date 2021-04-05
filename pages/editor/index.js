@@ -1,4 +1,14 @@
 // pages/editor/index.js
+
+import api from '../../invitation/api'
+const Upyun = require('../../utils/upyun-wxapp-sdk')
+
+const upyun = new Upyun({
+    bucket: 'color-stage',
+    operator: 'invitation',
+    getSignatureUrl: 'https://bestlang.cn/api/oss/upyun'
+  })
+
 Page({
     onShareAppMessage() {
         return {
@@ -6,82 +16,77 @@ Page({
         }
     },
     data: {
+        groom_name: '',
+        groom_mobile: '',
+        bride_name: '',
+        bride_mobile: '',
 
-        files: [{
-            url: 'http://mmbiz.qpic.cn/mmbiz_png/VUIF3v9blLsicfV8ysC76e9fZzWgy8YJ2bQO58p43Lib8ncGXmuyibLY7O3hia8sWv25KCibQb7MbJW3Q7xibNzfRN7A/0',
-        }, {
-            loading: true
-        }, {
-            error: true
-        }],
-        showTopTips: false,
+        date: '',
+        poster_img: '',
+        poster_welcome: '',
 
-        radioItems: [
-            { name: 'cell standard', value: '0', checked: true },
-            { name: 'cell standard', value: '1' }
-        ],
-        checkboxItems: [
-            { name: 'standard is dealt for u.', value: '0', checked: true },
-            { name: 'standard is dealicient for u.', value: '1' }
-        ],
-        items: [
-            { name: 'USA', value: '美国' },
-            { name: 'CHN', value: '中国', checked: 'true' },
-            { name: 'BRA', value: '巴西' },
-            { name: 'JPN', value: '日本' },
-            { name: 'ENG', value: '英国' },
-            { name: 'TUR', value: '法国' },
-        ],
+        address_text: '',
+        address: {
+            text: '',
+        },
+        latitude: '',
+        longitude: '',
 
-        date: "2016-09-01",
-        time: "12:01",
+        album: [],
 
-        countryCodes: ["+86", "+80", "+84", "+87"],
-        countryCodeIndex: 0,
+        audio_name: '',
+        audio_url: '',
+        audio_auto_play: true,
 
-        countries: ["中国", "美国", "英国"],
-        countryIndex: 0,
-
-        accounts: ["微信号", "QQ", "Email"],
-        accountIndex: 0,
-
-        isAgree: false,
         formData: {
 
         },
         rules: [{
-            name: 'radio',
-            rules: { required: false, message: '单选列表是必选项' },
+            name: 'groom_name',
+            rules: { required: true, message: '新郎姓名必填' },
         }, {
-            name: 'checkbox',
-            rules: { required: true, message: '多选列表是必选项' },
+            name: 'bride_name',
+            rules: { required: true, message: '新娘姓名必填' },
         }, {
-            name: 'name',
-            rules: { required: true, message: '请输入姓名' },
-        }, {
-            name: 'qq',
-            rules: { required: true, message: 'qq必填' },
-        }, {
-            name: 'mobile',
-            rules: [{ required: true, message: 'mobile必填' }, { mobile: true, message: 'mobile格式不对' }],
-        }, {
-            name: 'vcode',
-            rules: { required: true, message: '验证码必填' },
-        }, {
-            name: 'idcard',
-            rules: {
-                validator: function (rule, value, param, modeels) {
-                    if (!value || value.length !== 18) {
-                        return 'idcard格式不正确'
-                    }
-                }
-            },
-        }]
+            name: 'address_text',
+            rules: { required: true, message: '地址名称必填' },
+        }
+    ]
     },
     onLoad() {
         this.setData({
             selectFile: this.selectFile.bind(this),
-            uplaodFile: this.uplaodFile.bind(this)
+            uploadFile: this.uploadFile.bind(this),
+            uploadAlbumFile: this.uploadAlbumFile.bind(this)
+        })
+    },
+    createWedding: async function() {
+        console.log('createWedding groom_name : ', this.data.groom_name)
+        await api.createWedding({
+            groom: {
+                name: this.data.formData.groom_name,
+                tel: this.data.formData.groom_tel
+            },
+            bride: {
+                name: this.data.formData.bride_name,
+                tel: this.data.formData.bride_tel
+            },
+            time: this.data.formData.date,
+            address: {
+                text: this.data.formData.address_text,
+                latitude: this.data.address.latitude,
+                longitude: this.data.address.longitude
+            },
+            poster: {
+                img: this.data.poster_img,
+                welcome: this.data.formData.poster_welcome
+            },
+            album: this.data.album,
+            audio: {
+                name: "今天你要嫁给我",
+                url: "http://music.163.com/song/media/outer/url?id=5254811.mp3",
+                autoPlay: true
+            }
         })
     },
     radioChange: function (e) {
@@ -97,26 +102,6 @@ Page({
             [`formData.radio`]: e.detail.value
         });
     },
-    checkboxChange: function (e) {
-        console.log('checkbox发生change事件，携带value值为：', e.detail.value);
-
-        var checkboxItems = this.data.checkboxItems, values = e.detail.value;
-        for (var i = 0, lenI = checkboxItems.length; i < lenI; ++i) {
-            checkboxItems[i].checked = false;
-
-            for (var j = 0, lenJ = values.length; j < lenJ; ++j) {
-                if (checkboxItems[i].value == values[j]) {
-                    checkboxItems[i].checked = true;
-                    break;
-                }
-            }
-        }
-
-        this.setData({
-            checkboxItems: checkboxItems,
-            [`formData.checkbox`]: e.detail.value
-        });
-    },
     bindDateChange: function (e) {
         this.setData({
             date: e.detail.value,
@@ -125,42 +110,12 @@ Page({
     },
     formInputChange(e) {
         const { field } = e.currentTarget.dataset
+        console.log('field : ', field)
         this.setData({
             [`formData.${field}`]: e.detail.value
         })
     },
-    bindTimeChange: function (e) {
-        this.setData({
-            time: e.detail.value
-        })
-    },
-    bindCountryCodeChange: function (e) {
-        console.log('picker country code 发生选择改变，携带值为', e.detail.value);
-
-        this.setData({
-            countryCodeIndex: e.detail.value
-        })
-    },
-    bindCountryChange: function (e) {
-        console.log('picker country 发生选择改变，携带值为', e.detail.value);
-
-        this.setData({
-            countryIndex: e.detail.value
-        })
-    },
-    bindAccountChange: function (e) {
-        console.log('picker account 发生选择改变，携带值为', e.detail.value);
-
-        this.setData({
-            accountIndex: e.detail.value
-        })
-    },
-    bindAgreeChange: function (e) {
-        this.setData({
-            isAgree: !!e.detail.value.length
-        });
-    },
-    submitForm() {
+    submitForm: async function () {
         this.selectComponent('#form').validate((valid, errors) => {
             console.log('valid', valid, errors)
             if (!valid) {
@@ -172,27 +127,11 @@ Page({
 
                 }
             } else {
-                wx.showToast({
-                    title: '校验通过'
-                })
-            }
-        })
-        // this.selectComponent('#form').validateField('mobile', (valid, errors) => {
-        //     console.log('valid', valid, errors)
-        // })
-    },
-
-    // 图片选择器
-    chooseImage: function (e) {
-        var that = this;
-        wx.chooseImage({
-            sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-            sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-            success: function (res) {
-                // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-                that.setData({
-                    files: that.data.files.concat(res.tempFilePaths)
-                });
+                // wx.showToast({
+                //     title: '校验通过'
+                // })
+                this.createWedding()
+                wx.navigateBack()
             }
         })
     },
@@ -206,32 +145,103 @@ Page({
         console.log('files', files)
         // 返回false可以阻止某次文件上传
     },
-    uplaodFile(files) {
+    uploadFile(files) {
         console.log('upload files', files)
         // 文件上传的函数，返回一个promise
         return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                reject('some error')
-            }, 1000)
+            // setTimeout(() => {
+            //     reject('some error')
+            // }, 1000)
+            this.doUploadFile(files, resolve)
+        })
+    },
+    uploadAlbumFile(files) {
+        console.log('uploadAlbumFile ', files)
+        // 文件上传的函数，返回一个promise
+        return new Promise((resolve, reject) => {
+            // setTimeout(() => {
+            //     reject('some error')
+            // }, 1000)
+            this.doUploadAlbumFile(files, resolve)
+        })
+    },
+    getFileName(uri) {
+        const parts = uri.split('/')
+        return parts[parts.length -1]
+    },
+    doUploadFile(files, resolve) {
+        this.upyunUpload(files.tempFilePaths[0], (success, path) => {
+            if (success) {
+                this.setData({
+                    poster_img: path
+                })
+                resolve({
+                    urls: [path]
+                })
+            } else {
+                console.log('doUpload file failed')
+            }
+        })
+    },
+    upyunUpload(fp, callback) {
+        const tmpFileName = this.getFileName(fp);
+        const remotePath = 'invitation/user/' + tmpFileName
+        const ossPath = 'http://oss.bestlang.cn/' + remotePath
+        upyun.upload({
+          localPath: fp,
+          remotePath: remotePath,
+          success : (res) => {
+            console.log('success ', res)
+            callback(true, ossPath)
+          },
+          fail(e) {
+              console.log('fail ', e)
+              callback(false)
+          }
+        })
+    },
+    doUploadAlbumFile(files, resolve) {
+        console.log('doUploadAlbumFile ', files.tempFiles)
+        var album = []
+        files.tempFiles.forEach(f => {
+            this.upyunUpload(f.path, (success, path) => {
+                if (success) {
+                    album = album.concat(path)
+                    if (album.length === files.tempFiles.length) {
+                        this.setData({
+                            album
+                        })
+                        resolve({
+                            urls: album
+                        })
+                    }
+                } else {
+                    console.log('doUploadAlbumFile error')
+                }
+            })
         })
     },
     uploadError(e) {
         console.log('upload error', e.detail)
     },
     uploadSuccess(e) {
-        console.log('upload success', e.detail)
+        console.log('upload success', e)
     },
-
     chooseLocation() {
-        const that = this
         wx.chooseLocation({
-          success(res) {
+          success: (res) => {
             console.log(res)
-            that.setData({
-              hasLocation: true,
-              location: formatLocation(res.longitude, res.latitude),
-              locationAddress: res.address
+            this.setData({
+                address: {
+                    longitude: res.longitude,
+                    latitude: res.latitude
+                }
             })
+            if (!this.data.formData.address_text) {
+                this.setData({
+                    [`formData.address_text`]: res.address
+                })
+            }
           }
         })
     }

@@ -20,13 +20,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: async function (options) {
-    const weddingId = options.weddingId || 1
+    const weddingId = options.weddingId || app.globalData.weddingId
     app.globalData.weddingId = weddingId
 
     var wedding = await api.wedding(weddingId)
     this.setData({
       wedding: wedding,
-      musicStatus: wedding.audio.autoPlay || false
+      musicStatus: wedding.audio && wedding.audio.autoPlay || false
     })
 
     //创建动画

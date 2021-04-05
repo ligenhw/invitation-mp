@@ -1,0 +1,45 @@
+/* pages/my/index.wxss */
+.slide-image {
+  width: 100%;
+}
+
+.grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.grid-item {
+  padding: 5px 5px;
+  height: 500rpx;
+  width: 400rpx;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.poster-img {
+  height: 400rpx;
+  width: 200rpx;
+}
+
+.action-button-container {
+  display: flex;
+  width: 400rpx;
+}
+
+.action-button {
+  width: 100rpx;
+}
+
+.add {
+  position: absolute;
+  width: 120rpx;
+  height: 120rpx;
+  padding: 4rpx;
+  left: 84%;
+  top: 90%;
+}
+

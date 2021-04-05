@@ -1,0 +1,31 @@
+<!--pages/my/index.wxml-->
+<view>
+  <swiper
+    indicator-dots="true" autoplay="true" interval="5000" duration="1000" >
+    <block wx:for="{{banners}}" wx:key="index">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" mode="aspectFill" bindtap='previewImg' data-previewurl='{{banners}}'
+        data-currenturl='{{item}}'/>
+      </swiper-item> 
+    </block>  
+  </swiper>
+
+  <view class='grid'>
+    <block wx:for="{{weddings}}" wx:key="index">
+      <block wx:if="{{item.poster.img}}">
+        <view class="grid-item">
+          <image class="poster-img" src="{{item.poster.img}}"/>
+          <view class="action-button-container">
+            <button class="action-button" open-type="share" bindtap="onShare" data-content="{{item}}">分享</button>
+            <button class="action-button" bindtap="onDelete" data-content="{{item}}">删除</button>
+          </view>
+        </view>
+      </block>
+      <block wx:else>
+        <image class="grid-item" src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2964095976,4229777732&fm=26&gp=0.jpg" />
+      </block>
+    </block>
+  </view>
+
+  <image src="../../image/add.png" class="add" bindtap="addWedding"/>
+</view>
