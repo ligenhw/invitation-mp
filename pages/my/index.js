@@ -1,5 +1,6 @@
 // pages/my/index.js
 import api from '../../invitation/api'
+import { pv } from "../../starry/collctApi";
 
 Page({
 
@@ -58,6 +59,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: async function () {
+    pv('my')
+
     var weddings = await api.queryUserWedding()
 
     this.setData({
