@@ -1,4 +1,5 @@
 <!--pages/chat/index.wxml-->
+<block wx:if="{{!demoData}}">
 <view class="chat_container">
     <view wx:if="{{commentList.length > 0}}">
         <view class="chat_list" wx:for="{{commentList}}" wx:key="user">
@@ -40,3 +41,24 @@
         </view>
     </view>
 </view>
+</block>
+
+<block wx:else>
+    <view class="container">
+  <view class="bless_img">
+    <image src="/image/mail.png"/>
+  </view>
+  <view class="title">已收到好友的祝福</view>
+  <view class="title"> 点击下方按钮可送上祝福 </view>
+  <block wx:if="{{bless}}">
+    <view class="friends">
+        <open-data class="face" type="userAvatarUrl"></open-data>
+        <text class="bless-text">送来祝福 🎉🎉🎉</text>
+    </view>
+  </block>
+  <view class="btn_zone">
+    <button type="warn" loading="{{loading}}" bindtap="bless">{{ isBless ? '已祝福' : '送上祝福' }}</button>  
+  </view>
+</view>
+
+</block>

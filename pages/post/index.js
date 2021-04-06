@@ -12,6 +12,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    demoData: false,
     musicStatus: false,
     barrageValue: '',
   },
@@ -22,6 +23,11 @@ Page({
   onLoad: async function (options) {
     const weddingId = options.weddingId || app.globalData.weddingId
     app.globalData.weddingId = weddingId
+    if (weddingId === '1') {
+      this.setData({
+        demoData: true
+      })
+    }
 
     var wedding = await api.wedding(weddingId)
     this.setData({
@@ -57,29 +63,32 @@ Page({
   onShow: function () {
     pv('post')
     
+    if (this.data.demoData) {
+      return;
+    }
+
     console.log('init Socket')
-  
-      Promise.all([webScoket.init(), webScoket.client()]).then(result => {
-        stompClient = result[1]
-        stompClient.connect({}, () => {
-            stompClient.subscribe('/topic/greetings', response => {
-              console.log('收到订阅消息', response)
-              if (response.body) {
-                const res = JSON.parse(response.body)
-      
-                // 业务逻辑
-                console.log('add data', res)
-                const color = ['red', 'rgb(0, 255, 0)', '#0000FF']
-                const getRandom = (max = 10, min = 0) => Math.floor(Math.random() * (max - min) + min)
-                const colorId = getRandom(color.length)
-                this.barrage.addData([{
-                  content: res.content,
-                  color: color[colorId]
-                }]);
-              }
-            })
+    Promise.all([webScoket.init(), webScoket.client()]).then(result => {
+      stompClient = result[1]
+      stompClient.connect({}, () => {
+          stompClient.subscribe('/topic/greetings', response => {
+            console.log('收到订阅消息', response)
+            if (response.body) {
+              const res = JSON.parse(response.body)
+    
+              // 业务逻辑
+              console.log('add data', res)
+              const color = ['red', 'rgb(0, 255, 0)', '#0000FF']
+              const getRandom = (max = 10, min = 0) => Math.floor(Math.random() * (max - min) + min)
+              const colorId = getRandom(color.length)
+              this.barrage.addData([{
+                content: res.content,
+                color: color[colorId]
+              }]);
+            }
           })
-      })
+        })
+    })
   },
 
   /**
@@ -88,7 +97,8 @@ Page({
   onHide: function () {
     console.log('onHide')
     app.globalData.isReConnect = false
-    stompClient.disconnect()
+    if (stompClient)
+      stompClient.disconnect()
   },
 
   /**
@@ -97,7 +107,8 @@ Page({
   onUnload: function () {
     console.log('onUnload')
     app.globalData.isReConnect = false
-    stompClient.disconnect()
+    if (stompClient)
+      stompClient.disconnect()
   },
 
   /**

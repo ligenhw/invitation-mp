@@ -1,10 +1,10 @@
 {
   "pages":[
     "pages/post/index",
+    "pages/my/index",
     "pages/map/map",
     "pages/album/album",
     "pages/chat/index",
-    "pages/my/index",
     "pages/editor/index"
   ],
   "permission": {

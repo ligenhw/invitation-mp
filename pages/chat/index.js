@@ -10,6 +10,8 @@ Page({
      * 页面的初始数据
      */
     data: {
+      demoData: false,
+      bless: false,
       commentList: [],
       inputValue: '',
       page: 0
@@ -20,6 +22,11 @@ Page({
     onLoad: async function(options) {
       const weddingId = options.weddingId || app.globalData.weddingId
       app.globalData.weddingId = weddingId
+      if (weddingId === '1') {
+        this.setData({
+          demoData: true
+        })
+      }
 
       var comment = await api.queryComment(weddingId, 0, size)
       this.setData({
@@ -101,5 +108,10 @@ Page({
         this.setData({
             inputValue: e.detail.value
         })
+    },
+    bless() {
+      this.setData({
+        bless: true
+      })
     }
 })

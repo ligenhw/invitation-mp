@@ -34,12 +34,14 @@
             <image class="we" src="../../image/we.png"></image>
         </view>
     </view>
-    <view class="inputContainer">
-      <input class = "input"
-      bindinput="handleInput"
-      placeholder="请输入弹幕信息" 
-      value="{{barrageValue}}"
-      />
-      <button class="send" bind:tap="handleAddClick">发送弹幕</button>
-    </view>
+    <block wx:if="{{!demoData}}">
+      <view class="inputContainer">
+        <input class = "input"
+        bindinput="handleInput"
+        placeholder="请输入弹幕信息" 
+        value="{{barrageValue}}"
+        />
+        <button class="send" bind:tap="handleAddClick">发送弹幕</button>
+      </view>
+    </block>
 </view>

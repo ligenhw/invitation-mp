@@ -8,12 +8,16 @@
 
 .userinfo-avatar {
   overflow: hidden;
-  width: 128rpx;
-  height: 128rpx;
+  width: 228rpx;
+  height: 228rpx;
   margin: 20rpx;
-  border-radius: 50%;
+  border-radius: 30%;
+}
+
+.desc {
+  margin-top: 60rpx;
 }
 
 .usermotto {
-  margin-top: 200px;
+  margin-top: 100rpx;
 }

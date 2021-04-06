@@ -1,21 +1,15 @@
 <!--index.wxml-->
 <view class="container">
   <view class="userinfo">
-    <block wx:if="{{canIUseOpenData}}" calss="userinfo-opendata">
-      <view class="userinfo-avatar" bindtap="bindViewTap">
-        <open-data type="userAvatarUrl"></open-data>
+
+      <view>
+        <image class="userinfo-avatar" src="../../image/glass-cheers.png" mode="aspectFill" />
       </view>
-      <open-data type="userNickName"></open-data>
-    </block>
-    <block wx:elif="{{!hasUserInfo}}">
-      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
-    </block>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+      <text>欢聚一刻</text>
+      <text>提供开源免费的邀请函制作服务</text>
+      <text class="desc">登陆后，即可</text>
+      <text>制作和查看自己的婚礼邀请函</text>
+
   </view>
   <view class="usermotto">
     <button type="primary" class="user-motto" bindtap="login">微信登陆</button>
