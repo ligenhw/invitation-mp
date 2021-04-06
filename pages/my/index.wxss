@@ -43,3 +43,23 @@
   top: 90%;
 }
 
+.befirst {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100rpx;
+  /* width: 600rpx;
+  height: 450rpx;
+  margin: 0 auto;
+  min-height: 0;
+  overflow: hidden;
+   */
+}
+.befirst image{
+  width: 600rpx;
+  height: 450rpx;
+}
+
+.befirst text{
+  margin-top: 50rpx;
+}

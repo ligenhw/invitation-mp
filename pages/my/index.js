@@ -22,6 +22,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   async onLoad(options) {
+    var weddings = await api.queryUserWedding()
+
+    this.setData({
+      weddings: weddings
+    })
   },
 
   addWedding() {
@@ -60,12 +65,6 @@ Page({
    */
   onShow: async function () {
     pv('my')
-
-    var weddings = await api.queryUserWedding()
-
-    this.setData({
-      weddings: weddings
-    })
   },
 
   /**
@@ -85,8 +84,12 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: async function () {
+    var weddings = await api.queryUserWedding()
 
+    this.setData({
+      weddings: weddings
+    })
   },
 
   /**
