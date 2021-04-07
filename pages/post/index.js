@@ -1,6 +1,6 @@
 // pages/invitation/index.js
 import api from '../../invitation/api'
-import { pv } from "../../starry/collctApi";
+import { pv, cli } from "../../starry/collctApi";
 import webScoket from '../../utils/socket'
 let stompClient = ''
 
@@ -129,6 +129,8 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    cli('sharePostWedding-' + this.data.wedding.id)
+
     return {
       title: this.data.wedding.groom.name + ' ❤️ ' + this.data.wedding.bride.name + ' 邀请您参加我们的婚礼 🎉🎉🎉',
       path: '/pages/post/index?weddingId=' + this.data.wedding.id
@@ -178,6 +180,8 @@ Page({
     })
   },
   handleAddClick(e) {
+    cli('barrage')
+    
     stompClient.send("/app/hello", {}, JSON.stringify({
       name: this.data.barrageValue
     }));

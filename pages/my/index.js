@@ -1,6 +1,6 @@
 // pages/my/index.js
 import api from '../../invitation/api'
-import { pv } from "../../starry/collctApi";
+import { pv, cli } from "../../starry/collctApi";
 
 Page({
 
@@ -27,9 +27,13 @@ Page({
     this.setData({
       weddings: weddings
     })
+
+    wx.hideShareMenu()
   },
 
-  addWedding() {
+  createWedding() {
+    cli('createWedding')
+    
     wx.navigateTo({
       url: '/pages/editor/index',
     })
@@ -99,12 +103,10 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage: function (res) {
     const wedding = res.target.dataset.content
-    console.log('onShareAppMessage wedding ', wedding)
+    cli('shareMyWedding-' + wedding.id)
+
     return {
       title: wedding.groom.name + ' ❤️ ' + wedding.bride.name + ' 邀请您参加我们的婚礼 🎉🎉🎉',
       path: '/pages/post/index?weddingId=' + wedding.id

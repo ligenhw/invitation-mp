@@ -23,6 +23,27 @@ const pv = name => {
   })
 }
 
+const cli = name => {
+  let data = {
+    app: 'invitation-mp',
+    uid: 'test',
+    ts: new Date().getTime(),
+    action: name,
+    evt: 'cli'
+  }
+
+  wx.request({
+    url: collect + '?' + qs(data),
+    method: 'POST',
+    success: res => {
+      console.log('data', data , ' log collect success ')
+    },
+    fail: res => {
+      console.error('data', data , ' log collect failed')
+    }
+  })
+}
+
 const qs = obj =>  {
   let arr = [];
   for (var o in obj) {
@@ -32,5 +53,6 @@ const qs = obj =>  {
 }
 
 module.exports = {
-  pv
+  pv,
+  cli
 }

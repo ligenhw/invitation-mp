@@ -1,9 +1,11 @@
 // pages/editor/index.js
 
 import api from '../../invitation/api'
-import { pv } from "../../starry/collctApi";
+import { pv, cli } from "../../starry/collctApi";
 
 const Upyun = require('../../utils/upyun-wxapp-sdk')
+
+const app = getApp()
 
 const upyun = new Upyun({
     bucket: 'color-stage',
@@ -132,6 +134,8 @@ Page({
         })
     },
     submitForm: async function () {
+        cli('submitWedding')
+
         this.selectComponent('#form').validate((valid, errors) => {
             console.log('valid', valid, errors)
             if (!valid) {

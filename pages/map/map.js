@@ -1,5 +1,5 @@
 import api from '../../invitation/api'
-import { pv } from "../../starry/collctApi";
+import { pv, cli } from "../../starry/collctApi";
 
 const app = getApp()
 
@@ -9,6 +9,8 @@ Page({
     showLocation: true
   },
   onNavigation: function() {
+    cli('navigation')
+
     wx.openLocation({
       latitude: this.data.wedding.address.latitude,  // 要去的地址经度，浮点数
       longitude:this.data.wedding.address.longitude,  // 要去的地址纬度，浮点数
@@ -37,11 +39,15 @@ Page({
     })
   },
   callhe() {
+    cli('callGroom')
+
     wx.makePhoneCall({
       phoneNumber: this.data.wedding.groom.tel,
     })
   },
   callshe() {
+    cli('callBride')
+    
     wx.makePhoneCall({
       phoneNumber: this.data.wedding.bride.tel,
     })

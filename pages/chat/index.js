@@ -1,6 +1,6 @@
 // pages/chat/index.js
 import api from '../../invitation/api'
-import { pv } from "../../starry/collctApi"
+import { pv, cli } from "../../starry/collctApi"
 
 const app = getApp()
 const size = 10
@@ -35,6 +35,8 @@ Page({
     },
 
     onPublish: async function() {
+      cli('comment')
+
       if (this.data.inputValue.trim().length === 0) {
         wx.showToast({
           title: '请输入留言内容!',

@@ -38,5 +38,5 @@
     </view>
   </view>
 
-  <image src="../../image/add.png" class="add" bindtap="addWedding" />
+  <image src="../../image/add.png" class="add" bindtap="createWedding" />
 </view>

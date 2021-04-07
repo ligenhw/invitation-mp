@@ -1,5 +1,5 @@
 <view class="page" data-weui-theme="{{theme}}">
-<block wx:if="{{!demoData}}">
+<block wx:if="{{demoData}}">
     <mp-form-page subtitle="创建一个婚礼邀请函, 请联系 ligenhw@outlook.com"></mp-form-page>
 </block>
 <block wx:else>
