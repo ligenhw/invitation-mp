@@ -13,6 +13,7 @@ const upyun = new Upyun({
 
 Page({
     data: {
+        demoData: false,
         user: {},
 
         groom_name: '',
@@ -52,7 +53,15 @@ Page({
         }
     ]
     },
-    async onLoad() {
+    async onLoad(options) {
+        const weddingId = options.weddingId || app.globalData.weddingId
+        app.globalData.weddingId = weddingId
+        if (weddingId === '1') {
+            this.setData({
+                demoData: true
+            })
+        }
+
         this.setData({
             selectFile: this.selectFile.bind(this),
             uploadFile: this.uploadFile.bind(this),
