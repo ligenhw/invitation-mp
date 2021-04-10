@@ -1,19 +1,20 @@
 {
-  "pages":[
+  "pages": [
     "pages/post/index",
-    "pages/my/index",
-    "pages/map/map",
     "pages/album/album",
+    "pages/map/map",
     "pages/chat/index",
+    "pages/my/index",
+    "pages/login/index",
     "pages/editor/index"
   ],
   "permission": {
     "scope.userLocation": {
-      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+      "desc": "你的位置信息将用于设置位置信息"
     }
   },
   "tabBar": {
-    "list":[
+    "list": [
       {
         "pagePath": "pages/post/index",
         "iconPath": "image/tab/ic_home_normal.png",
@@ -53,11 +54,11 @@
     "kbone": true,
     "weui": true
   },
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

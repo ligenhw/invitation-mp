@@ -9,10 +9,12 @@ Page({
    */
   data: {
     banners: [
-      'https://img-pre.ivsky.com/img/tupian/pre/202009/10/yuanyue-006.jpg',
-      'https://img-pre.ivsky.com/img/tupian/pre/202009/10/yuanyue-008.jpg',
-      'https://img-pre.ivsky.com/img/tupian/pre/202009/10/yuanyue-005.jpg',
-      'https://img-pre.ivsky.com/img/tupian/pre/202009/07/jiguang.jpg'
+      'http://oss.bestlang.cn/invitation/banner/CR2A6780.jpg',
+      'http://oss.bestlang.cn/invitation/banner/CR2A6964.jpg',
+      'http://oss.bestlang.cn/invitation/banner/CR2A6985.jpg',
+      'http://oss.bestlang.cn/invitation/banner/CR2A7059.jpg',
+      'http://oss.bestlang.cn/invitation/banner/CR2A7210.jpg',
+      'http://oss.bestlang.cn/invitation/banner/CR2A7099.jpg'
     ],
     weddings: [
     ]
@@ -28,7 +30,7 @@ Page({
       weddings: weddings
     })
 
-    wx.hideShareMenu()
+    wx.hideShareMenu({})
   },
 
   createWedding() {
@@ -94,6 +96,8 @@ Page({
     this.setData({
       weddings: weddings
     })
+
+    wx.stopPullDownRefresh()
   },
 
   /**

@@ -5,6 +5,7 @@ import webScoket from '../../utils/socket'
 let stompClient = ''
 
 const app = getApp()
+var backgroundAudioManager = null
 
 Page({
 
@@ -50,11 +51,10 @@ Page({
     })
 
     // 播放背景音乐
+   backgroundAudioManager = wx.getBackgroundAudioManager()
     if (this.data.musicStatus) {
-      wx.playBackgroundAudio({
-        dataUrl: this.data.wedding.audio.url,
-        title: this.data.wedding.audio.name
-      })
+      backgroundAudioManager.title = this.data.wedding.audio.name
+      backgroundAudioManager.src = this.data.wedding.audio.url
     }
   },
   /**
@@ -71,7 +71,10 @@ Page({
     Promise.all([webScoket.init(), webScoket.client()]).then(result => {
       stompClient = result[1]
       stompClient.connect({}, () => {
-          stompClient.subscribe('/topic/greetings', response => {
+          const appName = 'invitation'
+          const roomId = app.globalData.weddingId
+
+          stompClient.subscribe(`/topic/${appName}/room/${roomId}`, response => {
             console.log('收到订阅消息', response)
             if (response.body) {
               const res = JSON.parse(response.body)
@@ -82,7 +85,7 @@ Page({
               const getRandom = (max = 10, min = 0) => Math.floor(Math.random() * (max - min) + min)
               const colorId = getRandom(color.length)
               this.barrage.addData([{
-                content: res.content,
+                content: res.msg,
                 color: color[colorId]
               }]);
             }
@@ -110,21 +113,6 @@ Page({
     if (stompClient)
       stompClient.disconnect()
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
   /**
    * 用户点击右上角分享
    */
@@ -138,15 +126,16 @@ Page({
   },
   play: function (event) {
     if (this.data.musicStatus) {
-      wx.pauseBackgroundAudio();
+      backgroundAudioManager.pause()
       this.setData({
         musicStatus: false
       })
     } else {
-      wx.playBackgroundAudio({
-        dataUrl: this.data.wedding.audio.url,
-        title: this.data.wedding.audio.name
-      })
+      if (backgroundAudioManager.src == null) {
+        backgroundAudioManager.title = this.data.wedding.audio.name
+        backgroundAudioManager.src = this.data.wedding.audio.url
+      }
+      backgroundAudioManager.play()
       this.setData({
         musicStatus: true
       })
@@ -182,8 +171,10 @@ Page({
   handleAddClick(e) {
     cli('barrage')
     
-    stompClient.send("/app/hello", {}, JSON.stringify({
-      name: this.data.barrageValue
+    const appName = 'invitation'
+    const roomId = app.globalData.weddingId
+    stompClient.send(`/topic/${appName}/room/${roomId}`, {}, JSON.stringify({
+      msg: this.data.barrageValue
     }));
     this.setData({
       barrageValue: '',
