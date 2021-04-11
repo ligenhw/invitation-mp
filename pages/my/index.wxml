@@ -33,7 +33,7 @@
     <view wx:else>
       <view class="befirst">
         <image src="https://wong-1251253615.cos.ap-shanghai.myqcloud.com/lovemail.gif" />
-        <text> 创建第一个邀请函吧 </text>
+        <text> 敬请期待 </text>
       </view>
     </view>
   </view>
