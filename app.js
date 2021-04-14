@@ -1,5 +1,28 @@
 // app.js
 
+import { pv } from "./starry/collctApi";
+
+const oldPage = Page;
+Page = function (args) {
+  const oldOnShow = args.onShow;
+  args.onShow = function (opts) {
+    const _self = this;
+    if (oldOnShow) {
+      oldOnShow.call(_self, opts);
+    }
+    onLoadTrace.call(_self);
+  }
+
+  oldPage(args);
+}
+
+function onLoadTrace() {
+  // 自定义的埋点处理
+  const _self = this;
+  pv(_self.route)
+}
+
+
 App({
   async onLaunch() {
     console.log('app onLaunch')

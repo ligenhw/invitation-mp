@@ -1,5 +1,5 @@
 import api from '../../invitation/api'
-import { pv, cli } from "../../starry/collctApi";
+import { cli } from "../../starry/collctApi";
 
 const app = getApp()
 
@@ -51,8 +51,5 @@ Page({
     wx.makePhoneCall({
       phoneNumber: this.data.wedding.bride.tel,
     })
-  },
-  onShow: async function () {
-    pv('map')
   }
 })

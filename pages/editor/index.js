@@ -1,7 +1,7 @@
 // pages/editor/index.js
 
 import api from '../../invitation/api'
-import { pv, cli } from "../../starry/collctApi";
+import { cli } from "../../starry/collctApi";
 
 const Upyun = require('../../utils/upyun-wxapp-sdk')
 
@@ -74,9 +74,6 @@ Page({
         this.setData({
             user
         })
-    },
-    onShow() {
-        pv('editor')
     },
     createWedding: async function() {
         console.log('createWedding groom_name : ', this.data.groom_name)

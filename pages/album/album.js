@@ -1,6 +1,5 @@
 // pages/album/album.js
 import api from '../../invitation/api'
-import { pv } from "../../starry/collctApi";
 
 const app = getApp()
 
@@ -40,13 +39,6 @@ Page({
    */
   onReady: function () {
 
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    pv('album')
   },
 
   /**

@@ -1,6 +1,6 @@
 // pages/my/index.js
 import api from '../../invitation/api'
-import { pv, cli } from "../../starry/collctApi";
+import { cli } from "../../starry/collctApi";
 
 Page({
 
@@ -64,13 +64,6 @@ Page({
    */
   onReady: function () {
 
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: async function () {
-    pv('my')
   },
 
   /**

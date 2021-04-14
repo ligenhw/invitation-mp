@@ -1,6 +1,6 @@
 // pages/invitation/index.js
 import api from '../../invitation/api'
-import { pv, cli } from "../../starry/collctApi";
+import { cli } from "../../starry/collctApi";
 import webScoket from '../../utils/socket'
 let stompClient = ''
 
@@ -61,7 +61,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    pv('post')
     
     if (this.data.demoData) {
       return;
