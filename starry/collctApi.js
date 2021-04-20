@@ -5,7 +5,7 @@ const collect = basePath + '/collect'
 const pv = name => {
   let data = {
     app: 'invitation-mp',
-    uid: 'test',
+    uid: getApp().globalData.openId,
     ts: new Date().getTime(),
     url: name,
     evt: 'pv'
@@ -26,7 +26,7 @@ const pv = name => {
 const cli = name => {
   let data = {
     app: 'invitation-mp',
-    uid: 'test',
+    uid: getApp().globalData.openId,
     ts: new Date().getTime(),
     action: name,
     evt: 'cli'

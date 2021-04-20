@@ -8,26 +8,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-    banners: [
-      'http://oss.bestlang.cn/invitation/banner/CR2A6780.jpg',
-      'http://oss.bestlang.cn/invitation/banner/CR2A6964.jpg',
-      'http://oss.bestlang.cn/invitation/banner/CR2A6985.jpg',
-      'http://oss.bestlang.cn/invitation/banner/CR2A7059.jpg',
-      'http://oss.bestlang.cn/invitation/banner/CR2A7210.jpg',
-      'http://oss.bestlang.cn/invitation/banner/CR2A7099.jpg'
-    ],
-    weddings: [
-    ]
+    weddings: [],
+    banners: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   async onLoad(options) {
-    var weddings = await api.queryUserWedding()
-
+    const banners = await api.queryBanner()
     this.setData({
-      weddings: weddings
+      banners
+    })
+
+    var weddings = await api.queryUserWedding()
+    this.setData({
+      weddings
     })
 
     wx.hideShareMenu({})

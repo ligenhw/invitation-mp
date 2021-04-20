@@ -44,6 +44,14 @@ const queryUser = () => {
   return http.get(basePath + '/user')
 }
 
+const queryOpenId = code => {
+  return http.get(basePath + `/openId?code=${code}`)
+}
+
+const queryBanner = () => {
+  return http.get(basePath + `/banner`)
+}
+
 module.exports = {
   wedding,
   queryComment,
@@ -52,5 +60,7 @@ module.exports = {
   createWedding,
   queryUserWedding,
   deleteWedding,
-  queryUser
+  queryUser,
+  queryOpenId,
+  queryBanner
 }
