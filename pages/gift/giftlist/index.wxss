@@ -1,0 +1,57 @@
+@import '../common.wxss';
+
+.chat_list {
+  width: 630rpx;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  padding: 30rpx;
+  min-height: 0;
+  overflow: hidden;
+  background-color: rgba(255,255,255,.9);
+  border-radius: 5px;
+  box-shadow:  0 0 20px rgba(190,77,43,.2);
+}
+.chat_face {
+  width: 100rpx;
+  height: 100rpx;
+  float: left;
+  margin-right: 30rpx;
+}
+.gift_item {
+  display: flex;
+  flex-direction: column;
+  color: #999;
+}
+.gift_primary {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  min-height: 0;
+  overflow: hidden;
+  margin-bottom: 10rpx;
+}
+.gift_seconary {
+  width: 100%;
+  min-height: 0;
+  overflow: hidden;
+  margin-bottom: 10rpx;
+  margin-left: 50rpx;
+}
+.gift_name {
+  font-size: 60rpx;
+  font-weight: 600;
+  color: rgb(214, 177, 13);
+}
+.gift_date {
+  font-size: 24rpx;
+  color: #ccc;
+}
+.add {
+  position: fixed;
+  width: 120rpx;
+  height: 120rpx;
+  padding: 4rpx;
+  left: 80%;
+  top: 75%;
+}

@@ -6,7 +6,9 @@
     "pages/chat/index",
     "pages/my/index",
     "pages/login/index",
-    "pages/editor/index"
+    "pages/editor/index",
+    "pages/gift/gifteditor/index",
+    "pages/gift/giftlist/index"
   ],
   "permission": {
     "scope.userLocation": {

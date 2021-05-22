@@ -52,6 +52,18 @@ const queryBanner = () => {
   return http.get(basePath + `/banner`)
 }
 
+const createGift = (gift) => {
+  return http.post(basePath + '/gift', gift)
+}
+
+const queryGift = (tag) => {
+  return http.get(basePath + `/gift?tag=${tag}`)
+}
+
+const deleteGift = (giftId) => {
+  return http.delete(basePath + '/gift/' + giftId)
+}
+
 module.exports = {
   wedding,
   queryComment,
@@ -62,5 +74,8 @@ module.exports = {
   deleteWedding,
   queryUser,
   queryOpenId,
-  queryBanner
+  queryBanner,
+  createGift,
+  queryGift,
+  deleteGift
 }

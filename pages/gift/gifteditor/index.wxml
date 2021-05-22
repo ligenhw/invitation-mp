@@ -1,0 +1,27 @@
+<view class="page" data-weui-theme="{{theme}}">
+    <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+    <mp-form-page>
+        <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+            <mp-cells title="类型">
+                <mp-checkbox-group prop="radio" multi="{{false}}" bindchange="radioChange">
+                    <mp-checkbox wx:for="{{radioItems}}" wx:key="value" label="{{item.name}}" value="{{item.value}}" checked="{{item.checked}}"></mp-checkbox>
+                </mp-checkbox-group>
+            </mp-cells>
+            <mp-cells title="内容">
+            <mp-cell prop="name" title="姓名" ext-class="">
+                <input bindinput="formInputChange" data-field="name" class="weui-input" placeholder="请输入姓名" />
+            </mp-cell>
+            <mp-cell prop="amount" title="金额" ext-class="">
+                <input bindinput="formInputChange" data-field="amount" class="weui-input"
+                    placeholder="请输入金额" />
+            </mp-cell>
+            <mp-cell prop="note" title="备注" ext-class="">
+                <input bindinput="formInputChange" data-field="note" class="weui-input" placeholder="请输入备注(非必填)" />
+            </mp-cell>
+            </mp-cells>
+        </mp-form>
+        <view slot="button">
+            <button class="weui-btn" type="primary" bindtap="submitForm">确定</button>
+        </view>
+    </mp-form-page>
+</view>

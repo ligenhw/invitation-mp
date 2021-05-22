@@ -11,7 +11,6 @@
   <view class='grid'>
     <view wx:if="{{weddings.length > 0}}">
       <block wx:for="{{weddings}}" wx:key="index">
-
         <view class="grid-item">
           <block wx:if="{{item.poster.img}}">
             <image class="poster-img" src="{{item.poster.img}}" />
@@ -25,8 +24,6 @@
             <button class="action-button" bindtap="onDelete" data-content="{{item}}">删除</button>
           </view>
         </view>
-
-
       </block>
     </view>
     <view wx:else>
@@ -37,5 +34,9 @@
     </view>
   </view>
 
-  <image src="../../image/add.png" class="add" bindtap="createWedding" />
+  <view class="menu_container">
+    <image src="../../image/card_giftcard.svg" class="menu_item" bindtap="onMyGiftListClick" />
+    <image src="../../image/add.png" class="menu_item" bindtap="createWedding" />
+  </view>
+  
 </view>

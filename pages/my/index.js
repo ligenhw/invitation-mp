@@ -104,5 +104,12 @@ Page({
       title: wedding.groom.name + ' ❤️ ' + wedding.bride.name + ' 邀请您参加我们的婚礼 🎉🎉🎉',
       path: '/pages/post/index?weddingId=' + wedding.id
     }
+  },
+  onMyGiftListClick() {
+    cli('myGiftList')
+    
+    wx.navigateTo({
+      url: '/pages/gift/giftlist/index',
+    })
   }
 })

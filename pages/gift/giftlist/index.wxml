@@ -1,0 +1,24 @@
+<view data-weui-theme="{{theme}}">
+    <view wx:if="{{giftList.length > 0}}">
+        <view class="chat_list" wx:for="{{giftList}}" wx:key="user">
+            <!-- <view class="chat_face">
+                <image src="{{item.userBaseInfo.avatarUrl}}" />
+            </view> -->
+            <view class="gift_item" bindtap="onGiftClick" data-content="{{item}}">
+                <view class="gift_primary">
+                    <text class="gift_name">{{item.name}}</text>
+                    <text class="gift_name">{{item.amount}}</text>
+                    <text class="gift_date">{{item.date}}</text>
+                </view>
+                <view class="gift_seconary" wx:if="{{item.note}}">备注 : {{item.note}}</view>
+            </view>
+        </view>
+    </view>
+    <view wx:else>
+        <view class="befirst">
+            <image src="https://wong-1251253615.cos.ap-shanghai.myqcloud.com/lovemail.gif" />
+        </view>
+    </view>
+    <image src="../../../image/add.png" class="add" bindtap="createGift" />
+    <mp-tabbar style="position:fixed;bottom:0;width:100%;left:0;right:0;" list="{{list}}" bindchange="tabChange"></mp-tabbar>
+</view>

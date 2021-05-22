@@ -34,13 +34,33 @@
   width: 100rpx;
 }
 
-.add {
+.menu_container {
+  display: flex;
+  flex-direction: column;
+
   position: fixed;
+  left: 82%;
+  top: 75%;
+}
+.menu_item {
   width: 120rpx;
   height: 120rpx;
   padding: 4rpx;
+}
+.add {
+  position: fixed;
+
   left: 84%;
   top: 90%;
+}
+
+.gift {
+  position: fixed;
+  width: 100rpx;
+  height: 100rpx;
+  padding: 4rpx;
+  left: 84%;
+  top: 80%;
 }
 
 .befirst {
