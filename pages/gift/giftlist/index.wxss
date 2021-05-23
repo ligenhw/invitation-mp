@@ -1,6 +1,9 @@
 @import '../common.wxss';
 
-.chat_list {
+.list {
+  margin-bottom: 170rpx;
+}
+.gift_list {
   width: 630rpx;
   margin: 0 auto;
   margin-top: 30rpx;
@@ -10,12 +13,6 @@
   background-color: rgba(255,255,255,.9);
   border-radius: 5px;
   box-shadow:  0 0 20px rgba(190,77,43,.2);
-}
-.chat_face {
-  width: 100rpx;
-  height: 100rpx;
-  float: left;
-  margin-right: 30rpx;
 }
 .gift_item {
   display: flex;

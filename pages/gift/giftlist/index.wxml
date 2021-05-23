@@ -1,6 +1,6 @@
 <view data-weui-theme="{{theme}}">
-    <view wx:if="{{giftList.length > 0}}">
-        <view class="chat_list" wx:for="{{giftList}}" wx:key="user">
+    <view class="list" wx:if="{{giftList.length > 0}}">
+        <view class="gift_list" wx:for="{{giftList}}" wx:key="user">
             <!-- <view class="chat_face">
                 <image src="{{item.userBaseInfo.avatarUrl}}" />
             </view> -->
