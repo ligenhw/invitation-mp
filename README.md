@@ -31,6 +31,8 @@ invitation-mp 是一款开源免费的婚礼邀请函 小程序。
 * 祝福留言
 * 我的
 * 邀请函制作
+* 礼金管理
+* 视频点播
 
 
 ## 线上效果
@@ -48,6 +50,9 @@ invitation-mp 是一款开源免费的婚礼邀请函 小程序。
     <img src="http://oss.bestlang.cn/invitation/product/my.jpg" width="300" height="500"  alt=""/>
     <img src="http://oss.bestlang.cn/invitation/product/editor.jpg" width="300" height="500"  alt=""/>
     <img src="http://oss.bestlang.cn/invitation/product/login.jpg" width="300" height="500"  alt=""/>
+    <img src="http://oss.bestlang.cn/invitation/product/gift.jpg" width="300" height="500"  alt=""/>
+    <img src="http://oss.bestlang.cn/invitation/product/createGift.jpg" width="300" height="500"  alt=""/>
+    <img src="http://oss.bestlang.cn/invitation/product/videoList.jpg" width="300" height="500"  alt=""/>
 </div>
 
 
