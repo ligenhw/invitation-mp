@@ -10,13 +10,19 @@ Page({
     },
   },
   async onLoad(options) {
-    const videoListId = options.videoListId || '606ad8a2c9eb4e2ef28563ce'
+    const videoListId = options.videoListId
+
+    if (!videoListId) {
+      wx.switchTab({
+        url: '/pages/post/index',
+      })
+    }
+
     var videoList = await api.queryVideoList(videoListId)
     this.setData({
       videoList
     })
-
-    console.log(videoList)
+    app.globalData.weddingId = videoList.id
   },
 
   onShareAppMessage() {
@@ -34,7 +40,6 @@ Page({
     this.inputValue = e.detail.value
   },
   toComment() {
-    app.globalData.weddingId = this.data.videoList.id
     wx.switchTab({
       url: '/pages/chat/index',
     })
