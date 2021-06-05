@@ -30,7 +30,7 @@ Page({
       })
     }
 
-    var wedding = await api.wedding(weddingId)
+    const wedding = await api.wedding(weddingId)
     this.setData({
       wedding: wedding,
       musicStatus: wedding.audio && wedding.audio.autoPlay || false

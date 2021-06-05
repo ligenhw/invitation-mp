@@ -13,8 +13,10 @@ Page({
       demoData: false,
       bless: false,
       commentList: [],
+      wedding: {},
       inputValue: '',
-      page: 0
+      page: 0,
+      videoList: false
     },
     /**
      * 生命周期函数--监听页面加载
@@ -31,6 +33,11 @@ Page({
       var comment = await api.queryComment(weddingId, 0, size)
       this.setData({
         commentList: comment.content
+      })
+
+      var wedding = await api.wedding(weddingId)
+      this.setData({
+        wedding: wedding
       })
     },
 
@@ -107,6 +114,11 @@ Page({
     bless() {
       this.setData({
         bless: true
+      })
+    },
+    toVideoList() {
+      wx.navigateTo({
+        url: '/pages/video/video?videoListId=' + this.data.wedding.videoListId,
       })
     }
 })

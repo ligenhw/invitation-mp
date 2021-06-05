@@ -64,6 +64,10 @@ const deleteGift = (giftId) => {
   return http.delete(basePath + '/gift/' + giftId)
 }
 
+const queryVideoList = (videoListId) => {
+  return http.get(basePath + '/videoList/' + videoListId)
+}
+
 module.exports = {
   wedding,
   queryComment,
@@ -77,5 +81,6 @@ module.exports = {
   queryBanner,
   createGift,
   queryGift,
-  deleteGift
+  deleteGift,
+  queryVideoList
 }

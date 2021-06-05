@@ -181,3 +181,12 @@ page {
   .share-btn::after{
     border: 1rpx solid #ffe6e2;
   }
+
+.videoListBtn {
+  position: fixed;
+  width: 120rpx;
+  height: 120rpx;
+  padding: 4rpx;
+  left: 80%;
+  top: 8%;
+}

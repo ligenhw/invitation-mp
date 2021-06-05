@@ -40,6 +40,9 @@
             </button>
         </view>
     </view>
+    <block wx:if="{{wedding.videoListId}}">
+        <image src="/image/videocam.svg" class="videoListBtn" bindtap="toVideoList" />
+    </block>
 </view>
 </block>
 
