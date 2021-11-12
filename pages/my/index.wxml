@@ -1,12 +1,7 @@
 <!--pages/my/index.wxml-->
 <view>
-  <swiper indicator-dots="true" autoplay="true" interval="5000" duration="1000">
-    <block wx:for="{{banners}}" wx:key="index">
-      <swiper-item>
-        <image src="{{item.url}}" class="slide-image" mode="aspectFill" bindtap='previewImg'/>
-      </swiper-item>
-    </block>
-  </swiper>
+
+  <ad unit-id="adunit-4f817ac6e615e96d"></ad>
 
   <view class='grid'>
     <view wx:if="{{weddings.length > 0}}">

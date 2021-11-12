@@ -1,25 +1,24 @@
 <view class="page-body">
   <view wx:for="{{videoList.videos}}">
-  <view wx:key="index" class="page-section tc item">
-    <view style="margin: 30rpx auto" class="weui-label">{{item.title}}</view>
-    <video 
-      id="index{{index}}" 
-      src="{{item.url}}"
-      title="{{item.title}}"
-      poster="{{item.poster}}"
-      binderror="videoErrorCallback" 
-      show-center-play-btn='{{true}}' 
-      show-play-btn="{{true}}"
-      show-screen-lock-button="true"
-      show-snapshot-button="true"
-      controls
-      picture-in-picture-mode="{{['push', 'pop']}}"
-      bindenterpictureinpicture='bindVideoEnterPictureInPicture'
-      bindleavepictureinpicture='bindVideoLeavePictureInPicture'
-    ></video>
-
+    <view wx:key="index" class="page-section tc item">
+      <view style="margin: 30rpx auto" class="weui-label">{{item.title}}</view>
+      <video 
+        id="index{{index}}" 
+        src="{{item.url}}"
+        title="{{item.title}}"
+        poster="{{item.poster}}"
+        binderror="videoErrorCallback" 
+        show-center-play-btn='{{true}}' 
+        show-play-btn="{{true}}"
+        show-screen-lock-button="true"
+        show-snapshot-button="true"
+        controls
+        picture-in-picture-mode="{{['push', 'pop']}}"
+        bindenterpictureinpicture='bindVideoEnterPictureInPicture'
+        bindleavepictureinpicture='bindVideoLeavePictureInPicture'
+      ></video>
       <button type="primary" class="page-body-button" bindtap="toComment">留言点赞👍</button>
-
+    </view>
   </view>
-  </view>
+  <ad unit-id="adunit-c87fd67a833cb916" ad-type="video" ad-theme="white"></ad>
 </view>

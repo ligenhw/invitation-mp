@@ -8,19 +8,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    weddings: [],
-    banners: []
+    weddings: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   async onLoad(options) {
-    const banners = await api.queryBanner()
-    this.setData({
-      banners
-    })
-
     var weddings = await api.queryUserWedding()
     this.setData({
       weddings
