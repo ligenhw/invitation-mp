@@ -56,6 +56,22 @@ Page({
     ]
     },
     async onLoad(options) {
+        if(wx.createInterstitialAd){
+            interstitialAd = wx.createInterstitialAd({ adUnitId: 'adunit-18a8a48a755feeab' })
+            interstitialAd.onLoad(() => {
+              console.log('onLoad event emit')
+            })
+            interstitialAd.onError((err) => {
+              console.log('onError event emit', err)
+            })
+            interstitialAd.onClose((res) => {
+              console.log('onClose event emit', res)
+            })
+            interstitialAd.show().catch((err) => {
+                console.error(err)
+            })
+        }
+
         const weddingId = options.weddingId || app.globalData.weddingId
         app.globalData.weddingId = weddingId
         if (weddingId === '1') {
@@ -74,6 +90,27 @@ Page({
         this.setData({
             user
         })
+    },
+    async showAd() {
+        // 在页面中定义插屏广告
+        let interstitialAd = null
+
+        // 在页面onLoad回调事件中创建插屏广告实例
+        if (wx.createInterstitialAd) {
+            interstitialAd = wx.createInterstitialAd({
+                adUnitId: 'adunit-18a8a48a755feeab'
+            })
+            interstitialAd.onLoad(() => {})
+            interstitialAd.onError((err) => {})
+            interstitialAd.onClose(() => {})
+        }
+
+        // 在适合的场景显示插屏广告
+        if (interstitialAd) {
+            interstitialAd.show().catch((err) => {
+                console.error(err)
+            })
+        }
     },
     createWedding: async function() {
         console.log('createWedding groom_name : ', this.data.groom_name)
